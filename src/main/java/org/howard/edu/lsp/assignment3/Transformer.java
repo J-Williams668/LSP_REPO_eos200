@@ -1,7 +1,7 @@
 package org.howard.edu.lsp.assignment3;
 
 /**
- * Transformer class interface
+ * Performs transformations on data
  */
 public interface Transformer<T> {
   T transform();

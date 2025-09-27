@@ -4,7 +4,7 @@ import java.util.List;
 
 
 /**
- * Extactor class interface
+ * Extacts data from a .csv file
  */
 public interface Extractor<T> {
   List<T> extract() throws Exception;
