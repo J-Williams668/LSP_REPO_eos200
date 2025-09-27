@@ -33,16 +33,6 @@ public class Product{
     this.category = category;
   }
 
-  public Product(int id, String name, double price, String category, String priceRange) throws IllegalArgumentException{
-  if (price < 0) {throw new IllegalArgumentException("Price cannot be negative");}
-  if (productID < 0) {throw new IllegalArgumentException("Price cannot be negative");}
-  this.productID = id;
-  this.name = name;
-  this.price = price;
-  this.category = category;
-  this.priceRange = priceRange;
-  }
-
   /**
    * Method to return attributes as strings
    */
