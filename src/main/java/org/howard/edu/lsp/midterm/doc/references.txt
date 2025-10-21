@@ -1,0 +1,2 @@
+https://www.geeksforgeeks.org/java/java-and-multiple-inheritance/ [For question 4 rationale]
+https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html [For question 4 rationale]
