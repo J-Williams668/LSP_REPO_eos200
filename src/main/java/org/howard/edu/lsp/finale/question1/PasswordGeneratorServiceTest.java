@@ -4,6 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for the PasswordGeneratorService class to verify that:
+ *
+ * The PasswordGeneratorService instance is not null
+ * The PasswordGeneratorService instance is a singleton
+ * generatePassword() throws IllegalStateException if no algorithm is set
+ * The "basic" algorithm only contains digits and is the correct length
+ * The "enhanced" algorithm only contains letters and digits and is the correct length
+ * The "letters" algorithm only contains letters and is the correct length
+ * Switching password algorithms changes behavior appropriately
+ */
 public class PasswordGeneratorServiceTest {
 
     private PasswordGeneratorService service;
@@ -15,7 +26,6 @@ public class PasswordGeneratorServiceTest {
 
     @Test
     public void checkInstanceNotNull() {
-        // verify that 'service' is not null
         assertNotNull(service, "PasswordGeneratorService instance should not be null");
     }
 
@@ -65,6 +75,7 @@ public class PasswordGeneratorServiceTest {
         String p = service.generatePassword(8);
 
         assertNotNull(p, "Generated password should not be null");
+        assertEquals(8, p.length(), "Password length must match requested length");
         assertTrue(p.chars().allMatch(Character::isLetter),
                 "Letters algorithm should generate letters only");
     }
