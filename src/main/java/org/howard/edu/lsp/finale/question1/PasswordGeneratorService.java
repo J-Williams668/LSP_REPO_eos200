@@ -18,3 +18,23 @@ public class PasswordGeneratorService {
         return generator.generate(length);
     }
 }
+
+/**
+ * DESIGN PATTERNS USED
+ *
+ * STRATEGY:
+ * The varying behaviors of the basic, enhanced, and letters algorithms
+ * were encapsulated and coded to the PasswordAlgorithm interface instead
+ * of subclassing a PasswordAlgorithm super class. An interface is better than
+ * inheritance since each password algorithm has its own behaviour for password
+ * generation. Interfaces also allow PasswordGenerator to easily swap between algorithms
+ * and be compatible with new ones that implement the PasswordAlgorithm interface.
+ *
+ * FACTORY METHOD:
+ * PasswordAlgorithmFactory decides which algorithm to instantiate based on its name.
+ * This allows the algorithm to easily be switched at runtime via setAlgorithm().
+ *
+ * SINGLETON:
+ * Only a single instance of PasswordGeneratorService will exist, with a single
+ * shared access point via getInstance().
+ */
