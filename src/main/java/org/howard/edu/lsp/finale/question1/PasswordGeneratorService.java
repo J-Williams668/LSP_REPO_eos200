@@ -1,19 +1,37 @@
 package org.howard.edu.lsp.finale.question1;
 
+/**
+ * Singleton point of access for PasswordGenerator.
+ */
 public class PasswordGeneratorService {
     private static final PasswordGeneratorService INSTANCE = new PasswordGeneratorService();
     private final PasswordGenerator generator = new PasswordGenerator();
 
     private PasswordGeneratorService(){}
 
+    /**
+     * Returns a singleton instance of the PasswordGeneratorService class
+     * @return singleton instance of PasswordGeneratorService class
+     */
     public static PasswordGeneratorService getInstance(){
         return INSTANCE;
     }
 
+    /**
+     * Sets the password algorithm by calling the setAlgorithm() method from
+     * PasswordGenerator
+     * @param name name of a supported password algorithm
+     */
     public void setAlgorithm(String name){
         generator.setAlgorithm(name);
     }
 
+    /**
+     * Generates a random password by calling the generate() method from
+     * PasswordGenerator
+     * @param length length of the generated password
+     * @return a randomly generated password of the selected algorithm
+     */
     public String generatePassword(int length){
         return generator.generate(length);
     }
