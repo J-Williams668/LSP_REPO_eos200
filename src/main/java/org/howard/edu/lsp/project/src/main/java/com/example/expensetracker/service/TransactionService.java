@@ -67,7 +67,7 @@ public class TransactionService {
                 LocalDateTime start = yearMonth.atDay(1).atStartOfDay();
                 LocalDateTime end = yearMonth.atEndOfMonth().atTime(23, 59, 59);
                 BigDecimal spending = transactionRepository
-                        .findByUserIdAndDateTime(userId, start, end)
+                        .findByUserIdAndDateTimeBetween(userId, start, end)
                         .stream()
                         .filter(t -> t.getType() == TransactionEntity.Type.EXPENSE)
                         .filter(t ->
@@ -88,7 +88,7 @@ public class TransactionService {
     }
 
     public List<TransactionResponse> listTransactions(Long userId, LocalDateTime start, LocalDateTime end){
-        return transactionRepository.findByUserIdAndDateTime(userId, start, end)
+        return transactionRepository.findByUserIdAndDateTimeBetween(userId, start, end)
                 .stream()
                 .map(t -> new TransactionResponse(
                         t.getId(),
