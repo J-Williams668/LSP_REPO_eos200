@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
-    List<TransactionEntity> findByUserIdAndDateTime(Long userId, LocalDateTime start, LocalDateTime end);
+    List<TransactionEntity> findByUserIdAndDateTimeBetween(Long userId, LocalDateTime start, LocalDateTime end);
 
     @Query("""
             SELECT t.category, SUM(t.amount)
