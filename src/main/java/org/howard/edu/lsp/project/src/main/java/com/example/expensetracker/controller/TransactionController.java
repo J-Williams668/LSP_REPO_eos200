@@ -1,5 +1,6 @@
 package com.example.expensetracker.controller;
 
+import com.example.expensetracker.dto.TransactionAlertResponse;
 import com.example.expensetracker.dto.TransactionRequest;
 import com.example.expensetracker.dto.TransactionResponse;
 import com.example.expensetracker.security.CustomUserDetails;
@@ -24,10 +25,10 @@ public class TransactionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TransactionResponse create(
+    public TransactionAlertResponse create(
             @AuthenticationPrincipal CustomUserDetails user,
             @Valid @RequestBody TransactionRequest request){
-        return transactionService.createTransaction(user.getId(), request);
+        return transactionService.createBudgetCheckedTransaction(user.getId(), request);
     }
 
     @GetMapping
