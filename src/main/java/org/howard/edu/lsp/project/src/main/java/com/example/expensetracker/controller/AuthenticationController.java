@@ -29,6 +29,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public AuthenticationResponse register(@Valid @RequestBody RegisterRequest request){
+        System.out.println(request);
         UserEntity user = userService.register(request);
         String token = jwtService.generateToken(user.getEmail());
         return new AuthenticationResponse(token);
@@ -36,6 +37,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public AuthenticationResponse login(@RequestBody LoginRequest request){
+        System.out.println(request);
         var authToken = new UsernamePasswordAuthenticationToken(request.email(), request.password());
         authenticationManager.authenticate(authToken);
         String token = jwtService.generateToken(request.email());
